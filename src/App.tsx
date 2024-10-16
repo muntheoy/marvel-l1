@@ -1,34 +1,22 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header';
-
-const Screen1: React.FC = () => (
-  <div>
-    <h1>Это Экран 1</h1>
-    <p>Здесь какой-то контент для экрана 1.</p>
-  </div>
-);
-
-const Screen2: React.FC = () => (
-  <div>
-    <h1>Это Экран 2</h1>
-    <p>Здесь какой-то контент для экрана 2.</p>
-  </div>
-);
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import CharactersPage from './components/CharactersPage';
+import ComicsPage from './components/ComicsPage';
 
 const App: React.FC = () => {
-  const [currentScreen, setCurrentScreen] = useState<string>('screen1'); // Указываем тип состояния
-
-  const handleScreenChange = (screen: string): void => {
-    setCurrentScreen(screen);
-  };
-
   return (
-    <div className="App">
-      <Header onSelectScreen={handleScreenChange} />
-      {currentScreen === 'screen1' && <Screen1 />}
-      {currentScreen === 'screen2' && <Screen2 />}
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/characters" replace />} />
+          <Route path="/characters" element={<CharactersPage />} />
+          <Route path="/comics" element={<ComicsPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

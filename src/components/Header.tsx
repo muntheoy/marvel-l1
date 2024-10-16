@@ -1,28 +1,32 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styles from '../styles/Header.module.scss';
-import logo from '../assets/logo.svg'
-import { textVariables } from '../textVariables'
+import logo from '../assets/logo.svg';
+import { textVariables } from '../textVariables';
 
+const Header: React.FC = () => {
+  const location = useLocation();
 
-interface HeaderProps {
-  onSelectScreen: (screen: string) => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onSelectScreen }) => {
   return (
     <div className={styles.container}>
-        <img
-          src= {logo} // Замените на путь к вашему логотипу
-          alt="Logo"    
-        />
-      
+      <img src={logo} alt="Logo" />
+
       <div className={styles.buttons}>
-        <button onClick={() => onSelectScreen('screen1')}>{textVariables.headerButtonLeft}</button>
-        <button onClick={() => onSelectScreen('screen2')}>{textVariables.headerButtonRight}</button>
+        <Link
+          className={`${styles.link} ${location.pathname === '/characters' ? styles.active : ''}`}
+          to="/characters"
+        >
+          {textVariables.headerButtonLeft}
+        </Link>
+        <Link
+          className={`${styles.link} ${location.pathname === '/comics' ? styles.active : ''}`}
+          to="/comics"
+        >
+          {textVariables.headerButtonRight}
+        </Link>
       </div>
     </div>
   );
 };
 
 export default Header;
-

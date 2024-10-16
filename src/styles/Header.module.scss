@@ -17,18 +17,22 @@
 
 }
 
-.buttons button {
+.buttons .link {
   color: $button-color;
   border: none;
   background-color: $primary-color;
   font-family: $font-oswald;
   font-size: 16pt;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease, color 0.3s ease; // Добавим плавное изменение фона и цвета
+  padding: 10pt;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 
-  
   &:hover {
-    color: $button-hover-text-color; 
-    text-decoration: underline; 
+    color: $button-hover-text-color;
+    text-decoration: underline;
   }
+}
+
+.buttons .active {
+  color: $active-button-color;
 }
