@@ -22,7 +22,7 @@
   border: none;
   background-color: $primary-color;
   font-family: $font-oswald;
-  font-size: 16pt;
+  font-size: $header-font-size;
   padding: 10pt;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
